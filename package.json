@@ -1,7 +1,15 @@
 {
   "name": "agentscale",
   "version": "0.1.1",
-  "description": "Deploy services with AgentScale",
+  "description": "Deploy web apps and APIs to a public URL with a single command.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpbonch/agentscale.git"
+  },
+  "homepage": "https://github.com/jpbonch/agentscale#readme",
+  "bugs": {
+    "url": "https://github.com/jpbonch/agentscale/issues"
+  },
   "type": "module",
   "bin": {
     "agentscale": "dist/index.js"
