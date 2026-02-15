@@ -16,7 +16,7 @@ paid_tier:
 commands:
   register: |
     npx agentscale register
-    # Generates an API key and saves it to ~/.agentscale.
+    # Generates an API key and saves it to ~/.agentscale/config.json.
   deploy: |
     npx agentscale deploy
     # Packages the current directory and deploys it.
