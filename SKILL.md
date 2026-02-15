@@ -32,7 +32,6 @@ project_requirements:
     - Node.js: a package.json with a start script.
     - Python: a requirements.txt.
     - Go: a go.mod.
-  - Your server must listen on the $PORT environment variable.
   - Custom domains, build commands, and start commands are not yet supported.
 
 limits:
