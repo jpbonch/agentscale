@@ -46,5 +46,10 @@ export async function deploy(options: { name?: string }): Promise<void> {
   if (data.expires_at) {
     console.log("Free tier: service will expire in 1 hour. Add credits for permanent deploys.");
   }
-  if (data.stdout) console.log(data.stdout);
+  if (data.domains?.length) {
+    for (const d of data.domains) {
+      console.log(`URL: https://${d}`);
+    }
+    console.log("Your service should be live shortly.");
+  }
 }

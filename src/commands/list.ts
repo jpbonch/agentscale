@@ -30,5 +30,10 @@ export async function list(): Promise<void> {
       info = `expires in ${mins}m`;
     }
     console.log(`  ${svc.name}  [${info}]  (created ${new Date(svc.created_at).toLocaleDateString()})`);
+    if (svc.domains?.length) {
+      for (const d of svc.domains) {
+        console.log(`    https://${d}`);
+      }
+    }
   }
 }
