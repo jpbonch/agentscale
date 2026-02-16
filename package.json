@@ -1,6 +1,6 @@
 {
   "name": "agentscale",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Deploy web apps and APIs to a public URL with a single command.",
   "repository": {
     "type": "git",
