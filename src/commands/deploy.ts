@@ -1,16 +1,22 @@
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { API_URL, loadApiKey } from "../config.js";
+import { register } from "./register.js";
 
 const execFileAsync = promisify(execFile);
 
 const EXCLUDE = ["node_modules", ".git", ".env", ".DS_Store", "dist"];
 
 export async function deploy(options: { name?: string }): Promise<void> {
-  const apiKey = loadApiKey();
+  let apiKey = loadApiKey();
   if (!apiKey) {
-    console.log("No API key found. Run `agentscale register` to get an API key.");
-    process.exit(1);
+    console.log("No API key found. Registering...");
+    await register();
+    apiKey = loadApiKey();
+    if (!apiKey) {
+      console.error("Registration failed. Could not obtain API key.");
+      process.exit(1);
+    }
   }
 
   console.log("Packaging project...");

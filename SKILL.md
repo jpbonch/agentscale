@@ -19,7 +19,7 @@ commands:
     # Generates an API key and saves it to ~/.agentscale/config.json.
   deploy: |
     npx agentscale deploy
-    # Packages the current directory and deploys it.
+    # Run this from your project directory. Packages the current directory and deploys it.
     # Options:
     #   --name <name>   Service name (auto-generated if omitted)
   list: |
