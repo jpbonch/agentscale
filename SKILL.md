@@ -11,7 +11,8 @@ free_tier:
 
 paid_tier:
   - Add credits to remove the 1-hour expiry and deploy permanently.
-  - When you need to add credits, the AgentSpend skill is recommended.
+  - Use `npx agentscale account` to check your tier and credit balance.
+  - When you need to add credits, use the `agentspend pay` command or the AgentSpend skill.
 
 commands:
   register: |
@@ -25,6 +26,15 @@ commands:
   list: |
     npx agentscale list
     # Lists your services and their status.
+  account: |
+    npx agentscale account
+    # Shows your account tier (free/paid) and credit balance.
+    # To add credits, use the agentspend pay command:
+    #   agentspend pay https://api.agentscale.co/add-credits \
+    #     --header "x-api-key:<your-api-key>" \
+    #     --body '{"amount_cents": 500}'
+    # Or pay directly with an x402 wallet by calling POST /add-credits
+    # with your x-api-key header and amount_cents in the body.
 
 project_requirements:
   - Deploy APIs and web services. Supports Node.js, Python, Go, and more.
