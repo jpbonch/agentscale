@@ -19,4 +19,6 @@ export async function account(): Promise<void> {
 
   console.log(`Tier: ${data.tier}`);
   console.log(`Credits: $${(data.credits / 100).toFixed(2)}`);
+  console.log(`\nTo add credits, pay ${API_URL}/add-credits`);
+  console.log("Use agentspend skill (credit card or crypto) or any x402 wallet.");
 }
