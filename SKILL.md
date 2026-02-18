@@ -15,7 +15,17 @@ required_tools: ["tar"]
 
 - Add credits to remove the 1-hour expiry and deploy permanently.
 - Use `npx agentscale account` to check your tier and credit balance.
-- When you need to add credits, use the `agentspend pay` command or the AgentSpend skill.
+- Services cost approximately $0.005-$0.01 per hour depending on usage.
+
+### How to Add Credits
+
+**Option 1: AgentSpend skill** (credit card or crypto)
+- Use the AgentSpend skill: https://agentspend.co/skill.md
+- Or use the `agentspend pay` command (see Account section below for details)
+
+**Option 2: x402 wallet** (payment protocol for AI agents)
+- x402 enables AI agents to make automated HTTP payments
+- Pay directly by calling `POST https://api.agentscale.co/add-credits` with your `x-api-key` header and `amount_cents` in the body
 
 ## Commands
 
@@ -38,13 +48,23 @@ Run this from your project directory. Packages the current directory and deploys
 **Options:**
 - `--name <name>` — Service name (auto-generated if omitted)
 
+**Returns:**
+- Service name
+- Public URL in format: `https://<service-name>.agentscale.app`
+- Expiry notice if on free tier
+
 ### List
 
 ```bash
 npx agentscale list
 ```
 
-Lists your services and their status.
+Lists your services and their status, URLs, and credit summary.
+
+**Returns:**
+- Service name, status (running/expires in Xm), and creation date
+- Public URLs for each service in format: `https://<service-name>.agentscale.app`
+- Credit summary: balance, burn rate, and time remaining (if applicable)
 
 ### Account
 
@@ -52,17 +72,29 @@ Lists your services and their status.
 npx agentscale account
 ```
 
-Shows your account tier (free/paid) and credit balance.
+Shows your account tier (free/paid), credit balance, burn rate, and time remaining.
 
-To add credits, use the `agentspend pay` command:
+**Returns:**
+- Account tier (free or paid)
+- Credit balance in dollars
+- Burn rate (cost per hour) if you have active services
+- Estimated time remaining based on current credits and burn rate
+- Instructions for adding credits
+
+**To add credits**, use the `agentspend pay` command:
 
 ```bash
 agentspend pay https://api.agentscale.co/add-credits \
   --header "x-api-key:<your-api-key>" \
-  --body '{"amount_cents": 500}'
+  --body '{"amount_cents": <your number>}'
 ```
 
-Or pay directly with an x402 wallet by calling `POST /add-credits` with your `x-api-key` header and `amount_cents` in the body.
+Or pay directly with an x402 wallet (x402 is a payment protocol for AI agents) by calling:
+```
+POST https://api.agentscale.co/add-credits
+Headers: x-api-key: <your-api-key>
+Body: {"amount_cents": <your number>}
+```
 
 ## Project Requirements
 
