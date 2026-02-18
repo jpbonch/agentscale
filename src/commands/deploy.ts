@@ -5,7 +5,27 @@ import { register } from "./register.js";
 
 const execFileAsync = promisify(execFile);
 
-const EXCLUDE = ["node_modules", ".git", ".env", ".DS_Store", "dist"];
+const EXCLUDE = [
+  ".git",
+  ".DS_Store",
+  "node_modules",
+  "dist",
+  "__pycache__",
+  ".venv",
+  "venv",
+  ".env",
+  ".env.*",
+  "*.pem",
+  "*.key",
+  "*.p12",
+  "*.pfx",
+  ".npmrc",
+  ".pypirc",
+  ".aws",
+  ".ssh",
+  ".idea",
+  ".vscode",
+];
 
 export async function deploy(options: { name?: string }): Promise<void> {
   let apiKey = loadApiKey();

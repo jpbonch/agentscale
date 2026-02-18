@@ -1,6 +1,7 @@
 ---
 name: agentscale
 description: Deploy web apps and APIs to a public URL with a single command.
+required_tools: ["tar"]
 ---
 
 ## Free Tier
@@ -71,6 +72,14 @@ Or pay directly with an x402 wallet by calling `POST /add-credits` with your `x-
   - **Python:** a `requirements.txt`.
   - **Go:** a `go.mod`.
 - Custom domains, build commands, and start commands are not yet supported.
+
+## Environment Variables
+
+- `AGENTSCALE_API_URL` — Overrides the default API base URL. **Warning:** this redirects all API calls, including those carrying your API key, to the specified URL.
+
+## System Requirements
+
+- `tar` must be available on PATH (used to package projects for deploy).
 
 ## Limits
 

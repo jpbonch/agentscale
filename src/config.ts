@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, chmodSync } from "node:fs";
 import path from "node:path";
 import os from "node:os";
 
@@ -10,7 +10,9 @@ const CONFIG_FILE = path.join(CONFIG_DIR, "config.json");
 
 export function saveApiKey(apiKey: string): void {
   mkdirSync(CONFIG_DIR, { recursive: true });
-  writeFileSync(CONFIG_FILE, JSON.stringify({ apiKey }));
+  chmodSync(CONFIG_DIR, 0o700);
+  writeFileSync(CONFIG_FILE, JSON.stringify({ apiKey }), { mode: 0o600 });
+  chmodSync(CONFIG_FILE, 0o600);
 }
 
 export function loadApiKey(): string | null {
