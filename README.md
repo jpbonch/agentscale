@@ -11,7 +11,7 @@ npx agentscale register   # get an API key (saved to ~/.agentscale)
 npx agentscale deploy     # package and deploy the current directory
 ```
 
-Your app gets a public `.railway.app` URL on deploy.
+Your app gets a public `.agentscale.app` URL on deploy.
 
 ## Commands
 
