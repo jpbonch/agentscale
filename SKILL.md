@@ -19,13 +19,10 @@ required_tools: ["tar"]
 
 ### How to Add Credits
 
-**Option 1: AgentSpend skill** (credit card or crypto)
-- Use the AgentSpend skill: https://agentspend.co/skill.md
-- Or use the `agentspend pay` command (see Account section below for details)
-
-**Option 2: x402 wallet** (payment protocol for AI agents)
+Use an x402 wallet (payment protocol for AI agents):
 - x402 enables AI agents to make automated HTTP payments
 - Pay directly by calling `POST https://api.agentscale.co/add-credits` with your `x-api-key` header and `amount_cents` in the body
+- Payments are made with USDC on Base network
 
 ## Commands
 
@@ -81,15 +78,8 @@ Shows your account tier (free/paid), credit balance, burn rate, and time remaini
 - Estimated time remaining based on current credits and burn rate
 - Instructions for adding credits
 
-**To add credits**, use the `agentspend pay` command:
+**To add credits**, pay with an x402 wallet:
 
-```bash
-agentspend pay https://api.agentscale.co/add-credits \
-  --header "x-api-key:<your-api-key>" \
-  --body '{"amount_cents": <your number>}'
-```
-
-Or pay directly with an x402 wallet (x402 is a payment protocol for AI agents) by calling:
 ```
 POST https://api.agentscale.co/add-credits
 Headers: x-api-key: <your-api-key>
