@@ -65,7 +65,7 @@ Burn rate: $0.01/hr (2 active services)
 Time remaining: ~20d 20h
 
 To add credits, pay https://api.agentscale.co/add-credits
-Use agentspend skill (credit card or crypto) or any x402 wallet.
+Payments are processed via the x402 protocol.
 ```
 
 ## Free tier
@@ -80,23 +80,13 @@ Add credits to remove the 1-hour expiry and deploy permanently.
 
 ### How to pay
 
-You can add credits using either:
+Use x402 for payments:
 
-1. **AgentSpend** (credit card or crypto):
-   ```bash
-   agentspend pay https://api.agentscale.co/add-credits \
-     --header "x-api-key:<your-api-key>" \
-     --body '{"amount_cents": 1000}'
-   ```
-   Or use the [AgentSpend skill](https://agentspend.co/skill.md) from Claude Code or other AI agents.
-
-2. **x402 wallet** (payment protocol for AI agents):
-   ```bash
-   # Using any x402-compatible wallet
-   POST https://api.agentscale.co/add-credits
-   Headers: x-api-key: <your-api-key>
-   Body: {"amount_cents": 1000}
-   ```
+```bash
+POST https://api.agentscale.co/add-credits
+Headers: x-api-key: <your-api-key>
+Body: {"amount_cents": 1000}
+```
 
 Your API key can be found in `~/.agentscale/config.json`.
 
